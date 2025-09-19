@@ -1,5 +1,6 @@
 // Portfolio Data Configuration
 // TODO: Update with your personal information
+import resumePdf from './assets/resume.pdf'; // Make sure this path is correct
 
 export const personal = {
   name: "Kartik Gupta", // TODO: Replace with your name
@@ -10,7 +11,7 @@ export const personal = {
   email: "itskartik098@gmail.com", // TODO: Replace with your email
   phone: "7042319289", // TODO: Replace with your phone
   photo: "/photo.jpg", // TODO: Replace with your photo in public/photo.jpg
-  resumeUrl: "/resume.pdf", // TODO: Place your resume in public/resume.pdf
+  resumeUrl: resumePdf, // TODO: Place your resume in public/resume.pdf
   enableSplashAnimation: true, // Set to false to disable splash screen
   preferredTheme: "dark" // "dark" or "light"
 };
