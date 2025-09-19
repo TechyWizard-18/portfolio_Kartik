@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fa';
 import { personal, socials, contactConfig } from '../data.js';
 import './Contact.css';
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,57 +34,92 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormStatus({ type: 'loading', message: 'Sending message...' });
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setFormStatus({ type: 'loading', message: 'Sending message...' });
+  //
+  //   try {
+  //     // TODO: Replace with actual form submission logic
+  //     // This is a placeholder implementation
+  //
+  //     // For demonstration, we'll simulate an API call
+  //     await new Promise(resolve => setTimeout(resolve, 2000));
+  //
+  //     // Uncomment and configure based on your chosen email service:
+  //
+  //     // Option 1: Formspree
+  //     // const response = await fetch(contactConfig.formEndpoint, {
+  //     //   method: 'POST',
+  //     //   headers: { 'Content-Type': 'application/json' },
+  //     //   body: JSON.stringify(formData)
+  //     // });
+  //
+  //     // Option 2: EmailJS
+  //     // const response = await emailjs.send(
+  //     //   contactConfig.emailJS.serviceId,
+  //     //   contactConfig.emailJS.templateId,
+  //     //   formData,
+  //     //   contactConfig.emailJS.publicKey
+  //     // );
+  //
+  //     // Simulate success for demo
+  //     setFormStatus({
+  //       type: 'success',
+  //       message: 'Message sent successfully! I\'ll get back to you soon.'
+  //     });
+  //
+  //     // Reset form
+  //     setFormData({ name: '', email: '', subject: '', message: '' });
+  //
+  //   } catch (error) {
+  //     setFormStatus({
+  //       type: 'error',
+  //       message: 'Failed to send message. Please try again or contact me directly.'
+  //     });
+  //   }
+  //
+  //   // Clear status after 5 seconds
+  //   setTimeout(() => {
+  //     setFormStatus({ type: '', message: '' });
+  //   }, 5000);
+  // };
 
-    try {
-      // TODO: Replace with actual form submission logic
-      // This is a placeholder implementation
-      
-      // For demonstration, we'll simulate an API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Uncomment and configure based on your chosen email service:
-      
-      // Option 1: Formspree
-      // const response = await fetch(contactConfig.formEndpoint, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData)
-      // });
-      
-      // Option 2: EmailJS
-      // const response = await emailjs.send(
-      //   contactConfig.emailJS.serviceId,
-      //   contactConfig.emailJS.templateId,
-      //   formData,
-      //   contactConfig.emailJS.publicKey
-      // );
 
-      // Simulate success for demo
-      setFormStatus({
-        type: 'success',
-        message: 'Message sent successfully! I\'ll get back to you soon.'
-      });
-      
-      // Reset form
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-    } catch (error) {
-      setFormStatus({
-        type: 'error',
-        message: 'Failed to send message. Please try again or contact me directly.'
-      });
-    }
-    
-    // Clear status after 5 seconds
-    setTimeout(() => {
-      setFormStatus({ type: '', message: '' });
-    }, 5000);
-  };
 
-  const getSocialIcon = (iconName) => {
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setFormStatus({ type: 'loading', message: 'Sending message...' });
+
+        try {
+            await emailjs.send(
+                contactConfig.emailJS.serviceId,
+                contactConfig.emailJS.templateId,
+                formData,
+                contactConfig.emailJS.publicKey
+            );
+
+            setFormStatus({
+                type: 'success',
+                message: 'Message sent successfully! I\'ll get back to you soon.'
+            });
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        } catch (error) {
+            setFormStatus({
+                type: 'error',
+                message: 'Failed to send message. Please try again.'
+            });
+        }
+
+        setTimeout(() => setFormStatus({ type: '', message: '' }), 5000);
+    };
+
+
+
+
+
+
+    const getSocialIcon = (iconName) => {
     const icons = {
       FaGithub: FaGithub,
       FaLinkedin: FaLinkedin,
@@ -300,13 +336,13 @@ const Contact = () => {
             </form>
 
             {/* Form Note */}
-            <div className="contact__form-note">
-              <p>
-                <strong>Note:</strong> This contact form is currently set up for demonstration. 
-                To make it functional, please configure your preferred email service 
-                (Formspree, EmailJS, etc.) in the contactConfig section of data.js.
-              </p>
-            </div>
+            {/*<div className="contact__form-note">*/}
+            {/*  <p>*/}
+            {/*    <strong>Note:</strong> This contact form is currently set up for demonstration. */}
+            {/*    To make it functional, please configure your preferred email service */}
+            {/*    (Formspree, EmailJS, etc.) in the contactConfig section of data.js.*/}
+            {/*  </p>*/}
+            {/*</div>*/}
           </motion.div>
         </div>
       </div>

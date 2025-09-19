@@ -1,5 +1,6 @@
 {
   "name": "webapp",
+  "homepage": "https://TechyWizard-18.github.io/portfolio_Kartik",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,10 +8,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.15",
+    "gh-pages": "^6.3.0",
     "lottie-react": "^2.4.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

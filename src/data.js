@@ -147,18 +147,18 @@ export const certifications = [
 ];
 
 // Contact form configuration
-export const contactConfig = {
-  // TODO: Replace with your actual form endpoint (EmailJS, Formspree, Netlify Forms, etc.)
-  formEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // Example endpoint - replace with actual
-  emailService: "EmailJS", // Options: "EmailJS", "Formspree", "Netlify", "Custom"
-  
-  // EmailJS configuration (if using EmailJS)
-  emailJS: {
-    serviceId: "YOUR_SERVICE_ID", // TODO: Replace with EmailJS service ID
-    templateId: "YOUR_TEMPLATE_ID", // TODO: Replace with EmailJS template ID
-    publicKey: "YOUR_PUBLIC_KEY" // TODO: Replace with EmailJS public key
-  }
-};
+// export const contactConfig = {
+//   // TODO: Replace with your actual form endpoint (EmailJS, Formspree, Netlify Forms, etc.)
+//   formEndpoint: "https://formspree.io/f/YOUR_FORM_ID", // Example endpoint - replace with actual
+//   emailService: "EmailJS", // Options: "EmailJS", "Formspree", "Netlify", "Custom"
+//
+//   // EmailJS configuration (if using EmailJS)
+//   emailJS: {
+//     serviceId: "YOUR_SERVICE_ID", // TODO: Replace with EmailJS service ID
+//     templateId: "YOUR_TEMPLATE_ID", // TODO: Replace with EmailJS template ID
+//     publicKey: "YOUR_PUBLIC_KEY" // TODO: Replace with EmailJS public key
+//   }
+// };
 
 // Theme configuration
 export const themeConfig = {
@@ -186,3 +186,11 @@ export const navigation = [
   { name: "Experience", href: "#experience", icon: "FaBriefcase" },
   { name: "Contact", href: "#contact", icon: "FaEnvelope" }
 ];
+
+export const contactConfig = {
+    emailJS: {
+        serviceId: "service_ep8ylj9",
+        templateId: "template_q1vmagn",
+        publicKey: "AiBGdc9Ti8uqeG2Ak"
+    }
+};
