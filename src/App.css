@@ -1,0 +1,302 @@
+/* App Component Styles */
+.App {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* App Loading State */
+.app-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(0, 212, 255, 0.3);
+  border-top: 3px solid var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Background Elements */
+.app-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bg-gradient {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  animation: float 20s ease-in-out infinite;
+}
+
+.bg-gradient--1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.bg-gradient--2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  top: 50%;
+  right: -150px;
+  animation-delay: 7s;
+}
+
+.bg-gradient--3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+  bottom: -175px;
+  left: 30%;
+  animation-delay: 14s;
+}
+
+/* Scroll-based animations */
+.main-content > section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section spacing */
+.main-content > section:not(:first-child) {
+  margin-top: 0;
+}
+
+/* Global section styling */
+section {
+  position: relative;
+  padding: 6rem 0;
+}
+
+/* Glassmorphic overlay for sections */
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.1);
+  backdrop-filter: blur(1px);
+  z-index: -1;
+}
+
+/* Alternating section backgrounds */
+section:nth-child(odd) {
+  background: linear-gradient(135deg, 
+    rgba(15, 23, 42, 0.95) 0%,
+    rgba(30, 41, 59, 0.9) 50%,
+    rgba(15, 23, 42, 0.95) 100%);
+}
+
+section:nth-child(even) {
+  background: linear-gradient(135deg, 
+    rgba(30, 41, 59, 0.95) 0%,
+    rgba(15, 23, 42, 0.9) 50%,
+    rgba(30, 41, 59, 0.95) 100%);
+}
+
+/* Custom scrollbar for the app */
+.App::-webkit-scrollbar {
+  width: 8px;
+}
+
+.App::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+.App::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  border-radius: 4px;
+}
+
+.App::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-accent), var(--color-secondary));
+}
+
+/* Focus management */
+.App:focus-within {
+  outline: none;
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 10000;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px) scale(0.95);
+  }
+  75% {
+    transform: translateY(20px) translateX(10px) scale(1.02);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .bg-gradient {
+    filter: blur(80px);
+    opacity: 0.2;
+  }
+  
+  .bg-gradient--1 {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .bg-gradient--2 {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .bg-gradient--3 {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 0;
+  }
+  
+  .bg-gradient {
+    filter: blur(60px);
+    opacity: 0.15;
+  }
+  
+  .bg-gradient--1 {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .bg-gradient--2 {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .bg-gradient--3 {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 3rem 0;
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .loading-spinner {
+    animation: none;
+    border: 3px solid var(--color-primary);
+  }
+  
+  .bg-gradient {
+    animation: none;
+  }
+  
+  .bg-gradient--1,
+  .bg-gradient--2,
+  .bg-gradient--3 {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .app-loading {
+    background: #000;
+  }
+  
+  section:nth-child(odd),
+  section:nth-child(even) {
+    background: #000;
+  }
+  
+  .bg-gradient {
+    display: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .app-background,
+  .skip-link {
+    display: none !important;
+  }
+  
+  section {
+    background: white !important;
+    padding: 1rem 0 !important;
+  }
+  
+  .main-content > section:not(:first-child) {
+    margin-top: 2rem !important;
+    page-break-before: auto;
+  }
+}
